@@ -1,33 +1,6 @@
 - hosts: Projeto-app
   become: yes
   tasks: 
-    - name: InfluxDB
-      docker_container:
-        name: influxdb
-        image: influxdb:1.0
-        state: started
-        ports:
-          - "8083:8083"
-          - "8086:8086"
-          - "25826:25826/udp"
-        volumes:
-          - /home/ubuntu/influxdb:/var/lib/influxdb
-
-    - name: Download Telegraf
-      get_url:
-        url: https://dl.influxdata.com/telegraf/releases/telegraf_1.5.2-1_amd64.deb
-        dest: /home/ubuntu/
-        mode: '0440'
-
-    - name: Instalando Telegraf
-      shell: dpkg -i telegraf_1.5.2-1_amd64.deb
-      
-    - name: Iniciando o servico do Telegraf
-      service:
-        name: telegraf
-        state: started
-      become: true
-
     - name: Git Clone do app
       git:
         repo: https://github.com/kauanvarella/app.git
