@@ -25,7 +25,7 @@
         image: mysql
         volumes:
           - /home/ubuntu/mysqldb:/var/lib/mysql
-        restart: always
+        restart: true
         env: 
           MYSQL_ROOT_PASSWORD: root
         ports:
