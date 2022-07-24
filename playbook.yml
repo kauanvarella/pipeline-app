@@ -13,7 +13,7 @@
         volumes:
           - /home/ubuntu/influxdb:/var/lib/influxdb
 
-    - name: Instalando Telegraf
+    - name: Download Telegraf
       get_url:
         url: https://dl.influxdata.com/telegraf/releases/telegraf_1.5.2-1_amd64.deb
         dest: /home/ubuntu/
