@@ -4,7 +4,7 @@
     - name: InfluxDB
       docker_container:
         name: influxdb
-        image: influxdb
+        image: influxdb:1.8
         state: started
         ports:
           - "8083:8083"
@@ -17,7 +17,7 @@
       shell: wget -qO- https://repos.influxdata.com/influxdb.key | sudo tee /etc/apt/trusted.gpg.d/influxdb.asc >/dev/null
       shell: source /etc/os-release
       shell: echo "deb https://repos.influxdata.com/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-      shell: sudo apt-get update && sudo apt-get install telegraf
+      shell: apt-get update && apt-get install telegraf
       
     - name: Git Clone do app
       git:
