@@ -17,4 +17,4 @@
         ports:
           - "80:80"
         volumes:
-          - /home/ubuntu/app:/app
+          - /home/ubuntu/app/www:/app
