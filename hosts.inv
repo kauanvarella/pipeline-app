@@ -1,0 +1,5 @@
+[Projeto-app]
+34.211.224.42
+
+[Projeto-app:vars]
+ansible_python_interpreter=/usr/bin/python3
