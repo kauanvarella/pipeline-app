@@ -13,6 +13,12 @@
         volumes:
           - /home/ubuntu/influxdb:/var/lib/influxdb
 
+    - name: Instalando Telegraf
+      shell: wget -qO- https://repos.influxdata.com/influxdb.key | sudo tee /etc/apt/trusted.gpg.d/influxdb.asc >/dev/null
+      shell: source /etc/os-release
+      shell: echo "deb https://repos.influxdata.com/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+      shell: sudo apt-get update && sudo apt-get install telegraf
+      
     - name: Git Clone do app
       git:
         repo: https://github.com/kauanvarella/app.git
