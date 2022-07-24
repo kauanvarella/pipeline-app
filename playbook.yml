@@ -23,8 +23,10 @@
       docker_container:
         name: db
         image: mysql
-        state: started
-        command: --default-authentication-plugin=mysql_native_password
+        volumes:
+          - /home/ubuntu/mysqldb:/var/lib/mysql
         restart: always
-        environment:
+        env: 
           MYSQL_ROOT_PASSWORD: root
+        ports:
+          - "3306:3306"
