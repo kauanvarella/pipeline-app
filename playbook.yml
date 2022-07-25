@@ -9,36 +9,32 @@
         version: master
         update: yes      
 
-    - name: teste
-      shell: cd /home/ubuntu/app
-      shell: docker-compose up -d
-      
-    # - name: Web Server
-    #   docker_container:
-    #     name: app
-    #     image: webdevops/php-apache:alpine-php7
-    #     state: started
-    #     ports:
-    #       - "80:80"
-    #     volumes:
-    #       - /home/ubuntu/app/www:/app
+    - name: Web Server
+      docker_container:
+        name: app
+        image: webdevops/php-apache:alpine-php7
+        state: started
+        ports:
+          - "80:80"
+        volumes:
+          - /home/ubuntu/app/www:/app
 
-    # - name: Database
-    #   docker_container:
-    #     name: db
-    #     image: mysql
-    #     command: --default-authentication-plugin=mysql_native_password
-    #     restart: always
-    #     volumes:
-    #       - /home/ubuntu/mysqldb:/var/lib/mysql
-    #     restart: true
-    #     env:
-    #       MYSQL_ROOT_PASSWORD: root
+    - name: Database
+      docker_container:
+        name: db
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        volumes:
+          - /home/ubuntu/mysqldb:/var/lib/mysql
+        restart: true
+        env:
+          MYSQL_ROOT_PASSWORD: root
 
-    # - name: adminer
-    #   docker_container:
-    #     name: adminer
-    #     image: adminer
-    #     restart: true
-    #     ports:
-    #       - 8080:8080
+    - name: adminer
+      docker_container:
+        name: adminer
+        image: adminer
+        restart: true
+        ports:
+          - 8080:8080

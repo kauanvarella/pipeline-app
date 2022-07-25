@@ -4,7 +4,7 @@ services:
   web:
     image: webdevops/php-apache:alpine-php7
     ports:
-      - "4500:4500"
+      - "80:80"
     volumes:
       - ./www:/app
 
@@ -15,13 +15,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "8080:80"
-    volumes:
-     - ./uploads.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #   ports:
+  #     - "8080:80"
+  #   volumes:
+  #    - ./uploads.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
 
     
