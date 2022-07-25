@@ -34,7 +34,6 @@
         restart: true
         env:
           MYSQL_ROOT_PASSWORD: root
-          DB_HOST: 'mysql'
 
     - name: adminer
       docker_container:
