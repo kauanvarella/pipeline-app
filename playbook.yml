@@ -33,7 +33,7 @@
           - "3306:3306"
 
     - name: Criando database e tabela
-      shell: docker exec -it mysql bash 
+      shell: docker exec -it db bash 
       shell: mysql -u root -p root
       shell: create database db_projeto;
       shell: use db_projeto;
