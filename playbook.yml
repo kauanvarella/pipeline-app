@@ -9,10 +9,6 @@
         version: master
         update: yes      
 
-    - name: Criando uma rede do Docker
-      docker_network:
-        name: app-network
-
     - name: Web Server
       docker_container:
         name: app
@@ -35,12 +31,3 @@
           MYSQL_ROOT_PASSWORD: root
         ports:
           - 3306:3306
-
-    - name: Add a container to a network, leaving existing containers connected
-      docker_network:
-        name: app-network
-        connected:
-          - app
-          - db
-          - adminer
-        appends: yes
