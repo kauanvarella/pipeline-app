@@ -35,6 +35,6 @@
       docker_container:
         name: adminer
         image: adminer
-        restart: always
+        restart: true
         ports:
           - 8080:8080
