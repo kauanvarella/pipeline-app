@@ -1,23 +1,23 @@
 - hosts: Projeto-app
   become: yes
   tasks: 
-    - name: Git Clone do app
-      git:
-        repo: https://github.com/kauanvarella/app.git
-        dest: /home/ubuntu/app
-        clone: yes
-        version: master
-        update: yes      
+    # - name: Git Clone do app
+    #   git:
+    #     repo: https://github.com/kauanvarella/app.git
+    #     dest: /home/ubuntu/app
+    #     clone: yes
+    #     version: master
+    #     update: yes      
 
-    - name: Web Server
-      docker_container:
-        name: app
-        image: webdevops/php-apache:alpine-php7
-        state: started
-        ports:
-          - "80:80"
-        volumes:
-          - /home/ubuntu/app/www:/app
+    # - name: Web Server
+    #   docker_container:
+    #     name: app
+    #     image: webdevops/php-apache:alpine-php7
+    #     state: started
+    #     ports:
+    #       - "80:80"
+    #     volumes:
+    #       - /home/ubuntu/app/www:/app
 
     - name: Database
       docker_container:
@@ -34,7 +34,7 @@
 
     - name: Criando database e tabela
       shell: docker exec -it db bash 
-      shell: mysql -u root -p root
+      shell: mysql -u root -p $MYSQL_ROOT_PASSWORD
       # shell: create database db_projeto;
       # shell: use db_projeto;
       # shell: create table login (COD INT NOT NULL AUTO_INCREMENT PRIMARY KEY, USUARIO VARCHAR(50) NOT NULL, SENHA VARCHAR(50) NOT NULL);
