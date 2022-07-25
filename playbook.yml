@@ -22,8 +22,6 @@
           - 80:80
         volumes:
           - /home/ubuntu/app/www:/app
-        networks:
-          - name: app-network
 
     - name: Database
       docker_container:
@@ -37,8 +35,6 @@
         env:
           MYSQL_ROOT_PASSWORD: senha
           DB_HOST: 'mysql'
-        networks:
-          - name: app-network
 
     - name: adminer
       docker_container:
@@ -47,5 +43,12 @@
         restart: true
         ports:
           - 8080:8080
-        networks:
-          - name: app-network
+
+    - name: Add a container to a network, leaving existing containers connected
+      docker_network:
+        name: app-network
+        connected:
+          - app
+          - db
+          - adminer
+        appends: yes
