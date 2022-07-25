@@ -15,7 +15,7 @@
         image: webdevops/php-apache:alpine-php7
         state: started
         ports:
-          - "80:80"
+          - 80:80
         volumes:
           - /home/ubuntu/app/www:/app
 
@@ -30,7 +30,7 @@
         restart: true
         env:
           MYSQL_ROOT_PASSWORD: root
-          DB_HOST: 127.0.0.1
+          DB_HOST: '127.0.0.1'
 
     - name: adminer
       docker_container:
