@@ -32,6 +32,8 @@
           MYSQL_ROOT_PASSWORD: root
 
     - name: adminer
+      docker_container:
+        name: adminer
         image: adminer
         restart: always
         ports:
