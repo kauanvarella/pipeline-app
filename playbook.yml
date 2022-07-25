@@ -35,7 +35,7 @@
     - name: Criando database e tabela
       shell: docker exec -it db bash 
       shell: mysql -u root -p root
-      shell: create database db_projeto;
-      shell: use db_projeto;
-      shell: create table login (COD INT NOT NULL AUTO_INCREMENT PRIMARY KEY, USUARIO VARCHAR(50) NOT NULL, SENHA VARCHAR(50) NOT NULL);
+      # shell: create database db_projeto;
+      # shell: use db_projeto;
+      # shell: create table login (COD INT NOT NULL AUTO_INCREMENT PRIMARY KEY, USUARIO VARCHAR(50) NOT NULL, SENHA VARCHAR(50) NOT NULL);
       # shell: insert into login (USUARIO, SENHA) values ('docker', '123');
