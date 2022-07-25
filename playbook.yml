@@ -9,6 +9,10 @@
         version: master
         update: yes      
 
+    - name: Criando uma rede do Docker
+      docker_network:
+        name: app-network
+
     - name: Web Server
       docker_container:
         name: app
