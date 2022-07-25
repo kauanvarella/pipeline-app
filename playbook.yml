@@ -24,10 +24,6 @@
         name: db
         image: mysql
         command: --default-authentication-plugin=mysql_native_password    
-        command: create database dbprojeto;
-        command: use dbprojeto;
-        command: create table login (COD INT NOT NULL AUTO_INCREMENT PRIMARY KEY, USUARIO VARCHAR(50) NOT NULL, SENHA VARCHAR(50) NOT NULL);
-        command: insert into login (USUARIO, SENHA) values ('docker', '123');
         volumes:
           - /home/ubuntu/mysqldb:/var/lib/mysql
         restart: true
@@ -35,3 +31,11 @@
           MYSQL_ROOT_PASSWORD: root
         ports:
           - "3306:3306"
+
+    - name: Criando database e tabela
+      shell: docker exec -it mysql bash 
+      shell: mysql -u root -p root
+      shell: create database db_projeto;
+      shell: use db_projeto;
+      shell: create table login (COD INT NOT NULL AUTO_INCREMENT PRIMARY KEY, USUARIO VARCHAR(50) NOT NULL, SENHA VARCHAR(50) NOT NULL);
+      shell: insert into login (USUARIO, SENHA) values ('docker', '123');
