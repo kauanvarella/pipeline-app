@@ -30,8 +30,7 @@
         restart: true
         env:
           MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306:3306
+          DB_HOST: 127.0.0.1
 
     - name: adminer
       docker_container:
