@@ -31,7 +31,6 @@
         env:
           MYSQL_ROOT_PASSWORD: root
 
-
     - name: adminer
         image: adminer
         restart: always
