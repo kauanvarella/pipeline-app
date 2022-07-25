@@ -35,7 +35,7 @@
           - /home/ubuntu/mysqldb:/var/lib/mysql
         restart: true
         env:
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: senha
           DB_HOST: 'mysql'
         networks:
           - name: app-network
