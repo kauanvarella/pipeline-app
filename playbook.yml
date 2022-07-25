@@ -36,14 +36,6 @@
         ports:
           - 3306:3306
 
-    - name: adminer
-      docker_container:
-        name: adminer
-        image: adminer
-        restart: true
-        ports:
-          - 8080:8080
-
     - name: Add a container to a network, leaving existing containers connected
       docker_network:
         name: app-network
