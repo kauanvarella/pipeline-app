@@ -25,18 +25,20 @@
         image: mysql:5
         volumes:
           - /home/ubuntu/mysqldb:/var/lib/mysql
+        command: /home/ubuntu/app/www/scriptdb.sh
         restart: true
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
           - 3306:3306
 
-    - name: Criando database e tabela
-      shell: docker exec -it db bash
-      shell: mysql -u root -proot
-      shell: exit
-      shell: exit
-      # shell: create database dbprojeto;
+    # - name: Criando database e tabela
+    #   shell: docker exec -it db bash
+    #   shell: mysql -u root -proot
+    #   shell: create database dbprojeto;
+    #   shell: exit
+    #   shell: exit
+      
       # shell: use dbprojeto;
       # shell: create table cadastros(cod INT NOT NULL AUTO_INCREMENT PRIMARY KEY, usuario VARCHAR(50) NOT NULL, senha VARCHAR(50) NOT NULL);
 
