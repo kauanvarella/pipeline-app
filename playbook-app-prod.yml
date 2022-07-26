@@ -28,5 +28,6 @@
         restart: true
         env:
           MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: dbprojeto
         ports:
           - 3306:3306
