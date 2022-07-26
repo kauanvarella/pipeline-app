@@ -20,16 +20,16 @@ pipeline {
                         input(id: "Deploy Gate", message: "Fazer o deploy em produção?", ok: 'Deploy')
                     }
                 }
+            }
         }
         stage('Deploy da aplicacao') {
             steps {
                 try {
                     ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app.yml', playbook: 'playbook-app-prod.yml' 
-                } catch (Exception e ) {
+                } catch (Exception e) {
                     slackSend (color: 'error', message: "[ FALHA ] Falha no deploy em http://34.211.224.42/ em ${currentBuild.duration}s", tokenCredentialId: 'slack-token')
                     currentBuild.result = 'ABORTED'
-                }         
-                                                   
+                }                                                       
             }
         }
         stage('Notificacao no Slack') {
