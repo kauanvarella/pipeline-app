@@ -1,7 +1,7 @@
 pipeline {
     agent { dockerfile true }
     stages {
-        stage('Notificacao no Slack iniciando Deploy') {
+        stage('Notificacao no Slack iniciando novo Deploy') {
             steps {
                 slackSend (color: 'good', message: '[ Em andamento ] Novo deploy iniciado em http://34.211.224.42/', tokenCredentialId: 'slack-token')
             }
