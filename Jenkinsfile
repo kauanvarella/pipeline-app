@@ -13,7 +13,7 @@ pipeline {
                 sh 'echo PASSOU NO TESTE 3'
             }
         }
-        stage('Aprovacao do deploy') {
+        stage('Aprovacao do deploy em producao') {
             steps {
                 script {
                     timeout(time: 10, unit: 'MINUTES') {
@@ -22,13 +22,13 @@ pipeline {
                 }
             }
         }
-        stage('Deploy da aplicacao') {
+        stage('Deploy em producao') {
             steps {
                 script {
                     try {
-                        ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app.yml', playbook: 'playbook-app-prod.yml' 
+                        ansiblePlaybook credentialsId: 'private-ky', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app.yml', playbook: 'playbook-app-prod.yml' 
                     } catch (Exception e) {
-                        slackSend (color: 'error', message: "[ FALHA ] Falha no deploy em http://34.211.224.42/ em ${currentBuild.duration}s", tokenCredentialId: 'slack-token')
+                        slackSend (color: 'error', message: "[ FALHA ] Falha no deploy em http://34.211.224.42/", tokenCredentialId: 'slack-token')
                         currentBuild.result = 'ABORTED'
                     }                       
                 }                                                    
