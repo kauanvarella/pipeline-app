@@ -1,0 +1,17 @@
+- hosts: Projeto-app
+  become: yes
+  tasks: 
+    - name: Parando o container app-homolog
+      docker_container:
+        name: app-homolog
+        state: stopped
+    
+    - name: Removendo o container app-homolog
+      docker_container:
+        name: app-homolog
+        state: absent
+
+    - name: Removendo o diretório app-homolog
+      file:
+        path: /home/ubuntu/app-homolog
+      state: absent

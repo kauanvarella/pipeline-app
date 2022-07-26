@@ -1,0 +1,32 @@
+- hosts: Projeto-app
+  become: yes
+  tasks: 
+    - name: Git Clone do app
+      git:
+        repo: https://github.com/kauanvarella/app.git
+        dest: /home/ubuntu/app-prod
+        clone: yes
+        version: master
+        update: yes      
+
+    - name: Web Server
+      docker_container:
+        name: app
+        image: webdevops/php-apache:alpine-php7
+        state: started
+        ports:
+          - 80:80
+        volumes:
+          - /home/ubuntu/app/www:/app-prod
+
+    - name: Database
+      docker_container:
+        name: db
+        image: mysql:5
+        volumes:
+          - /home/ubuntu/mysqldb:/var/lib/mysql
+        restart: true
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306

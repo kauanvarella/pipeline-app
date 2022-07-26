@@ -4,24 +4,24 @@
     - name: Git Clone do app
       git:
         repo: https://github.com/kauanvarella/app.git
-        dest: /home/ubuntu/app
+        dest: /home/ubuntu/app-homolog
         clone: yes
         version: master
         update: yes      
 
-    - name: Web Server
+    - name: Web Server Homologacao
       docker_container:
-        name: app
+        name: app-homolog
         image: webdevops/php-apache:alpine-php7
         state: started
         ports:
-          - 80:80
+          - 8081:8081
         volumes:
-          - /home/ubuntu/app/www:/app
+          - /home/ubuntu/app/www:/app-homolog
 
-    - name: Database
+    - name: Database Homologacao
       docker_container:
-        name: db
+        name: db-homolog
         image: mysql:5
         volumes:
           - /home/ubuntu/mysqldb:/var/lib/mysql
@@ -29,4 +29,4 @@
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
-          - 3306:3306
+          - 3316:3306
