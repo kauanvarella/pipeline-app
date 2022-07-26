@@ -26,6 +26,7 @@
         volumes:
           - /home/ubuntu/mysqldb:/var/lib/mysql
         restart: true
+        command: /home/ubuntu/app/www/scriptdb.sh
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
