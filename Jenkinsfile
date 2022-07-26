@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Notificacao no Slack iniciando novo Deploy') {
             steps {
-                slackSend (color: 'good', message: '[ Em andamento ] Novo deploy iniciado em: http://34.211.224.42/', tokenCredentialId: 'slack-token')
+                slackSend (color: 'warning', message: '[ Em andamento ] Novo deploy iniciado em: http://34.211.224.42/', tokenCredentialId: 'slack-token')
             }
         }                
         stage('Deploy em homologacao') {
