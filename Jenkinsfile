@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Notificacao no Slack iniciando novo Deploy') {
             steps {
-                slackSend (color: 'good', message: '[ Em andamento ] Novo deploy iniciado em http://34.211.224.42/', tokenCredentialId: 'slack-token')
+                slackSend (color: 'good', message: '[ Em andamento ] Novo deploy iniciado em: http://34.211.224.42/', tokenCredentialId: 'slack-token')
             }
         }                
         stage('Deploy em homologacao') {
@@ -33,7 +33,7 @@ pipeline {
                     try {
                         ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app-prod.yml', playbook: 'playbook-app.yml' 
                     } catch (e){
-                        slackSend (color: 'danger', message: "[ FALHA ] Falha no deploy em http://34.211.224.42/", tokenCredentialId: 'slack-token')
+                        slackSend (color: 'danger', message: "[ FALHA ] Falha no deploy em: http://34.211.224.42/", tokenCredentialId: 'slack-token')
                         error('Interrompendo a Pipeline')
                     }                       
                 }                                                    
