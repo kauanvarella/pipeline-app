@@ -1,27 +1,27 @@
-- hosts: Projeto-app
+- hosts: Projeto-app-homolog
   become: yes
   tasks: 
     - name: Git Clone do app
       git:
         repo: https://github.com/kauanvarella/app.git
-        dest: /home/ubuntu/app-homolog
+        dest: /home/ubuntu/app
         clone: yes
         version: master
         update: yes      
 
-    - name: Web Server Homologacao
+    - name: Web Server
       docker_container:
-        name: app-homolog
+        name: app
         image: webdevops/php-apache:alpine-php7
         state: started
         ports:
-          - 8081:8081
+          - 80:80
         volumes:
-          - /home/ubuntu/app/www:/app-homolog
+          - /home/ubuntu/app/www:/app
 
-    - name: Database Homologacao
+    - name: Database
       docker_container:
-        name: db-homolog
+        name: db
         image: mysql:5
         volumes:
           - /home/ubuntu/mysqldb:/var/lib/mysql
@@ -29,4 +29,4 @@
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
-          - 3316:3306
+          - 3306:3306

@@ -1,10 +1,10 @@
-- hosts: Projeto-app
+- hosts: Projeto-app-prod
   become: yes
   tasks: 
     - name: Git Clone do app
       git:
         repo: https://github.com/kauanvarella/app.git
-        dest: /home/ubuntu/app-prod
+        dest: /home/ubuntu/app
         clone: yes
         version: master
         update: yes      
@@ -17,7 +17,7 @@
         ports:
           - 80:80
         volumes:
-          - /home/ubuntu/app-prod/www:/app
+          - /home/ubuntu/app/www:/app
 
     - name: Database
       docker_container:

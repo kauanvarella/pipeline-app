@@ -4,29 +4,24 @@ pipeline {
         // stage('Deploy em homologacao') {
         //     steps {
         //         sh 'chmod 600 ssh-prod-meuapp.pem'                
-        //         ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-homolog.yml'                                    
+        //         ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook.yml'                                    
         //     }
         // }
-        // stage('Testes automatizados') {
-        //     steps {
-        //         sh 'echo PASSOU NO TESTE 1'
-        //         sh 'echo PASSOU NO TESTE 2'
-        //         sh 'echo PASSOU NO TESTE 3'
-        //     }
-        // }
+        stage('Testes automatizados') {
+            steps {
+                sh 'echo PASSOU NO TESTE 1'
+                sh 'echo PASSOU NO TESTE 2'
+                sh 'echo PASSOU NO TESTE 3'
+            }
+        }
         // stage('Aprovacao do deploy') {
         //     steps {
               
         //     }
         // }
-        // stage('Desfazendo o ambiente de homologacao') {
-        //     steps {            
-        //         ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-desfaz.yml'                                    
-        //     }
-        // } 
         stage('Deploy da aplicacao') {
             steps {            
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-prod.yml'                                    
+                ansiblePlaybook credentialsId: 'private-key', colorized: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-prod.yml'                                    
             }
         }    
     }
