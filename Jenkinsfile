@@ -1,11 +1,11 @@
 pipeline {
     agent { dockerfile true }
     stages {       
-        // stage('Deploy em homologacao') {
-        //     steps {            
-        //         ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-homolog.yml'                                    
-        //     }
-        // }
+        stage('Deploy em homologacao') {
+            steps {            
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-homolog.yml'                                    
+            }
+        }
         stage('Testes automatizados') {
             steps {
                 sh 'echo PASSOU NO TESTE 1'
