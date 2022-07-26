@@ -31,12 +31,12 @@
         ports:
           - 3306:3306
 
-    - name: Criando database e tabela
-      shell: docker exec -it db bash
-      shell: mysql -u root -proot
-      shell: create database dbprojeto;
-      shell: exit
-      shell: exit
+    # - name: Criando database e tabela
+    #   shell: docker exec -it db bash
+    #   shell: mysql -u root -proot
+    #   shell: create database dbprojeto;
+    #   shell: exit
+    #   shell: exit
       
       # shell: use dbprojeto;
       # shell: create table cadastros(cod INT NOT NULL AUTO_INCREMENT PRIMARY KEY, usuario VARCHAR(50) NOT NULL, senha VARCHAR(50) NOT NULL);
