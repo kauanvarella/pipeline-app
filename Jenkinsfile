@@ -21,7 +21,7 @@ pipeline {
         // }
         stage('Deploy da aplicacao') {
             steps {            
-                ansiblePlaybook credentialsId: 'private-key', colorized: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-prod.yml'                                    
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-prod.yml'                                    
             }
         }    
     }
