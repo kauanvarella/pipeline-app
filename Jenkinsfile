@@ -2,8 +2,7 @@ pipeline {
     agent { dockerfile true }
     stages {       
         // stage('Deploy em homologacao') {
-        //     steps {
-        //         sh 'chmod 600 ssh-prod-meuapp.pem'                
+        //     steps {            
         //         ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-homolog.yml'                                    
         //     }
         // }
