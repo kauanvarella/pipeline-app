@@ -25,11 +25,12 @@
         image: mysql:5
         volumes:
           - /home/ubuntu/mysqldb:/var/lib/mysql
-        command: /home/ubuntu/app/script.sql
         restart: true
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
-          - 3306:3306   
-    # - name: Criar database e tabela
-    #   shell: docker exec -i db mysql -u root -proot < 
+          - 3306:3306
+      
+    - name: Criar database e tabela
+      shell: docker exec db /bin/sh -c 'mysql -u root -proot </home/ubuntu/app/script.sql'
+             
