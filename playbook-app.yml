@@ -24,10 +24,9 @@
         name: db
         image: mysql:5
         volumes:
-          - /home/ubuntu/app/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+          - /home/ubuntu/mysqldb:/var/lib/mysql
         restart: true
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
           - 3306:3306
-          # - /home/ubuntu/mysqldb:/var/lib/mysql
