@@ -27,7 +27,7 @@ pipeline {
                 script {
                     try {
                         ansiblePlaybook credentialsId: 'private-ky', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app.yml', playbook: 'playbook-app-prod.yml' 
-                    } catch {
+                    } catch (e){
                         slackSend (color: 'error', message: "[ FALHA ] Falha no deploy em http://34.211.224.42/", tokenCredentialId: 'slack-token')
                         currentBuild.result = 'ABORTED'
                         error('Interrompendo a Pipeline')
