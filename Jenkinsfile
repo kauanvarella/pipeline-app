@@ -3,7 +3,7 @@ pipeline {
     stages {       
         stage('Deploy em homologacao') {
             steps {            
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-homolog.yml'                                    
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app.yml', playbook: 'playbook-app-homolog.yml'                                    
             }
         }
         stage('Testes automatizados') {
@@ -20,8 +20,13 @@ pipeline {
         // }
         stage('Deploy da aplicacao') {
             steps {            
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts.yml', playbook: 'playbook-prod.yml'                                    
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app.yml', playbook: 'playbook-app-prod.yml'                                    
             }
-        }    
+        }
+        // stage('Notificacao no Slack') {
+        //     steps {
+              
+        //     }
+        // }    
     }
 }
