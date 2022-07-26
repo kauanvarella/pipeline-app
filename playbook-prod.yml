@@ -17,7 +17,7 @@
         ports:
           - 80:80
         volumes:
-          - /home/ubuntu/app/www:/app-prod
+          - /home/ubuntu/app-prod/www:/app
 
     - name: Database
       docker_container:
