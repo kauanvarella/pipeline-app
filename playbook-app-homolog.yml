@@ -1,32 +1,38 @@
-- hosts: Projeto-app-homolog
-  become: yes
-  tasks: 
-    - name: Git Clone do app
-      git:
-        repo: https://github.com/kauanvarella/app.git
-        dest: /home/ubuntu/app
-        clone: yes
-        version: master
-        update: yes      
+# - hosts: Projeto-app-homolog
+#   become: yes
+#   tasks: 
+#     - name: Git Clone do app
+#       git:
+#         repo: https://github.com/kauanvarella/app.git
+#         dest: /home/ubuntu/app
+#         clone: yes
+#         version: master
+#         update: yes      
 
-    - name: Web Server
-      docker_container:
-        name: app
-        image: webdevops/php-apache:alpine-php7
-        state: started
-        ports:
-          - 80:80
-        volumes:
-          - /home/ubuntu/app/www:/app
+#     - name: Web Server
+#       docker_container:
+#         name: app
+#         image: webdevops/php-apache:alpine-php7
+#         state: started
+#         ports:
+#           - 80:80
+#         volumes:
+#           - /home/ubuntu/app/www:/app
 
-    - name: Database
-      docker_container:
-        name: db
-        image: mysql:5
-        volumes:
-          - /home/ubuntu/mysqldb:/var/lib/mysql
-        restart: true
-        env:
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306:3306
+#     - name: Database
+#       docker_container:
+#         name: db
+#         image: mysql:5
+#         volumes:
+#           - /home/ubuntu/mysqldb:/var/lib/mysql
+#         restart: true
+#         env:
+#           MYSQL_ROOT_PASSWORD: root
+#         ports:
+#           - 3306:3306
+
+#     - name: Criado database e tabela
+#     shell: mysql -u root -proot
+#     shell: create database dbprojeto;
+#     shell: use dbprojeto;
+#     shell: create table cadastros(cod INT NOT NULL AUTO_INCREMENT PRIMARY KEY, usuario VARCHAR(50) NOT NULL, senha VARCHAR(50) NOT NULL);

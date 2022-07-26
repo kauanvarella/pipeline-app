@@ -3,7 +3,7 @@ pipeline {
     stages {       
         stage('Deploy em homologacao') {
             steps {            
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app.yml', playbook: 'playbook-app-homolog.yml'                                    
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app-homolog.yml', playbook: 'playbook-app.yml'                                    
             }
         }
         stage('Testes automatizados') {
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app.yml', playbook: 'playbook-app-prod.yml' 
+                        ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app-prod.yml', playbook: 'playbook-app.yml' 
                     } catch (e){
                         slackSend (color: 'danger', message: "[ FALHA ] Falha no deploy em http://34.211.224.42/", tokenCredentialId: 'slack-token')
                         error('Interrompendo a Pipeline')
