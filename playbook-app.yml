@@ -32,11 +32,11 @@
           - 3306:3306
 
     - name: Criando database e tabela
-      shell: sudo docker exec -it db bash
+      shell: docker exec -it db bash
       shell: mysql -u root -proot
       shell: create database dbprojeto;
-      shell: use dbprojeto;
-      shell: create table cadastros(cod INT NOT NULL AUTO_INCREMENT PRIMARY KEY, usuario VARCHAR(50) NOT NULL, senha VARCHAR(50) NOT NULL);  
+      # shell: use dbprojeto;
+      # shell: create table cadastros(cod INT NOT NULL AUTO_INCREMENT PRIMARY KEY, usuario VARCHAR(50) NOT NULL, senha VARCHAR(50) NOT NULL);
 
 
     # - name: Criando database e tabela
