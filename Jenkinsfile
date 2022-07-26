@@ -1,6 +1,11 @@
 pipeline {
     agent { dockerfile true }
-    stages {       
+    stages {
+        stage('Notificacao no Slack iniciando Deploy') {
+            steps {
+                slackSend (color: 'good', message: '[ Em andamento ] Novo deploy iniciado em http://34.211.224.42/', tokenCredentialId: 'slack-token')
+            }
+        }                
         stage('Deploy em homologacao') {
             steps {            
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts-app-homolog.yml', playbook: 'playbook-app.yml'                                    
